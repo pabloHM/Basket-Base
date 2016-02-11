@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Basket Base 2</string>
+    <string name="action_home">Inicio</string>
+    <string name="action_calendar">Calendario</string>
+    <string name="action_comenta">Comenta el partido</string>
+    <string name="action_patro">Amigos de Basket Base</string>
+    <string name="action_ofertas">Promociones</string>
+    <string name="action_unirse">¿Quieres que tu club sea Basket Base?</string>
+    <string name="action_colabora">¿Quieres colaborar con Basket Base?</string>
+</resources>
