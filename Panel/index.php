@@ -43,6 +43,7 @@
 					<div id='loginError' class='error'>Hubo un error en los datos introducidos.</div>
 					<div id='bdError' class='error'>Hubo un error en la conexión a la base de datos. Disculpe las molestias.</div>
 					<div id="enviar"><button id='login' type="submit" class="btn btn-success">Enviar</button></div>
+					<div id="enviarGcm"><button id='gcm' type="submit" class="btn btn-danger">GCM</button></div>
 				</form>
 			</div>
 		</div>

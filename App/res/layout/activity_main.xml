@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context="com.base.basket.basketbase1.MainActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -37,12 +37,12 @@
                     <RelativeLayout
                         android:id="@+id/preImg"
                         android:layout_width="wrap_content"
-                        android:gravity="center_horizontal"
                         android:layout_height="match_parent">
                         <ProgressBar
-                            android:layout_width="wrap_content"
-                            android:foregroundGravity="center_horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_margin="10dp"
                             android:layout_height="match_parent"
+                            android:gravity="center"
                             android:indeterminate="true"/>
                     </RelativeLayout>
                 </RelativeLayout>
@@ -50,20 +50,24 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
+                    android:gravity="center"
                     android:layout_weight="5">
                     <Spinner
                         android:id="@+id/spinnerProvs"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:background="#eee">
+                        android:layout_margin="1dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center">
                     </Spinner>
                     <Spinner
                         android:id="@+id/spinnerEquipos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:background="#eee">
+                        android:layout_margin="1dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center">
                     </Spinner>
                 </LinearLayout>
             </LinearLayout>

@@ -31,12 +31,14 @@
 		$titulo=utf8_encode($_POST['title']);
 		$imagen=$_POST['imagen'];
 		$catNom=$_POST['catNom'];
+		$idNom=$rowP["idequipo"];
 	}
 	else{
 		$mensaje=$rowP['local']." ".$rowM['ptsLocal']." - ".$rowM['ptsVis']." ".$rowP['visitante'];
 		$titulo="Resultado ".utf8_encode($rowC['nombre']);
 		$imagen="";
 		$catNom=utf8_encode($rowE['nombre']).utf8_encode($rowC['nombre']);
+		$idNom=$rowP["idequipo"];
 	}
 
 	$push_payload = json_encode(array(
@@ -46,7 +48,8 @@
 	                "title" => $titulo,
 	                "modal" => $modal,
 	                "imagen" => $imagen,
-	                "catNom"=> $catNom
+	                "catNom"=> $catNom,
+	                "idNom"=> $idNom
 	        )
 	));
 	print_r($push_payload);

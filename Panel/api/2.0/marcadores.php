@@ -26,7 +26,12 @@
 		$resP=mysqli_query($con, "SELECT * FROM tpartidos2 WHERE ".$where)or die("ERROR EN LA CONSULTA.");
 	}
 	else if($idclub!=""){
-		$resP=mysqli_query($con, "SELECT * FROM tpartidos2 WHERE idequipo IN(SELECT tequipos2.id FROM tequipos2, tcategorias WHERE idclub=".$idclub." ORDER BY tcategorias.orden)")or die("ERROR EN LA CONSULTA");
+		if($idclub=="0"){
+			$petClub=mysqli_query($con, "SELECT * FROM tclubs2 WHERE bb=1 ORDER BY RAND() LIMIT 1")or die("ERROR EN LA CONSULTA DE CLUB ALEATORIO.");
+			$resClub=mysqli_fetch_assoc($petClub);
+			$idclub=$resClub["id"];
+		}
+		$resP=mysqli_query($con, "SELECT * FROM tpartidos2 WHERE idequipo IN(SELECT id FROM tequipos2 WHERE idclub=".$idclub.")")or die("ERROR EN LA CONSULTA");
 	}
     while($rowP = mysqli_fetch_array($resP)){
     	$resE=mysqli_query($con, "SELECT idcategoria FROM tequipos2 WHERE id=".$rowP["idequipo"])or die("ERROR EN LA CONSULTA.");

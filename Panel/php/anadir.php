@@ -37,8 +37,18 @@
 				$id=$_GET["id"];
 				$qry="UPDATE ".$tabla."2 SET ptsLocal=".$_POST["local"].", ptsVis=".$_POST["vis"]." WHERE id='".$id."'";
 			}
-			else
-				$qry="INSERT INTO ".$tabla."2(idpartido, ptsLocal, ptsVis) VALUES (".$_POST["idpartido"].", ".$_POST["local"].", ".$_POST["vis"].")";
+			else{
+				$selectQRY="SELECT * FROM tmarcadores2 WHERE idpartido=".$_POST['idpartido'];
+				$resMarc=mysqli_query($con, $selectQRY);
+				if(mysqli_num_rows($resMarc)>0){
+					$rowMarc=mysqli_fetch_assoc($resMarc);
+					$id=$rowMarc['id'];
+					$qry="UPDATE ".$tabla."2 SET ptsLocal=".$_POST["local"].", ptsVis=".$_POST["vis"]." WHERE id='".$id."'";
+				}
+				else{
+					$qry="INSERT INTO ".$tabla."2(idpartido, ptsLocal, ptsVis) VALUES (".$_POST["idpartido"].", ".$_POST["local"].", ".$_POST["vis"].")";
+				}
+			}
 		break;
 		case "tusers":
 			if($editar=='true'){

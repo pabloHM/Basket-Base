@@ -92,9 +92,9 @@
 							if($sw=="0")
 								$qry="SELECT * FROM tpartidos2 WHERE idequipo='".$_GET["id"]."'";
 							else if($sw=="1")
-								$qry="SELECT * FROM tpartidos2 WHERE idequipo='".$_GET["id"]."' AND id NOT IN(SELECT idpartido FROM tmarcadores2)";
+								$qry="SELECT * FROM tpartidos2 WHERE idequipo='".$_GET["id"]."' AND (id NOT IN(SELECT idpartido FROM tmarcadores2) OR id IN(SELECT idpartido FROM tmarcadores2 WHERE ptsLocal IS NULL))";
 							else
-								$qry="SELECT p.id, m.id as idM, idpartido, ptsLocal, ptsVis, local, visitante FROM tpartidos2 p, tmarcadores2 m WHERE idequipo='".$_GET["id"]."' AND p.id=idpartido";
+								$qry="SELECT p.id, m.id as idM, idpartido, ptsLocal, ptsVis, local, visitante FROM tpartidos2 p, tmarcadores2 m WHERE idequipo='".$_GET["id"]."' AND p.id=idpartido AND ptsLocal IS NOT NULL";
 							$res=mysqli_query($con, $qry);
 							while($row=mysqli_fetch_array($res)){
 								if($sw=="0")

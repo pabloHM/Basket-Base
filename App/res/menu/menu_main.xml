@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    tools:context="com.base.basket.basketbase1.MainActivity">
     <item android:id="@+id/action_calendar"
         android:title="@string/action_calendar"
         android:orderInCategory="100"
@@ -20,6 +20,10 @@
         app:showAsAction="never" />
     <item android:id="@+id/action_colabora"
         android:title="@string/action_colabora"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_ayuda"
+        android:title="@string/action_ayuda"
         android:orderInCategory="100"
         app:showAsAction="never" />
 </menu>
