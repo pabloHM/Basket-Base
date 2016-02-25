@@ -20,17 +20,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provincias);
 
-        SharedPreferences provincias = getSharedPreferences("Provincias", 0);
         lista = (ListView) findViewById(R.id.listaProvincias);
         nombres=new ArrayList<>();
-
-        if(provincias.getAll().size()>0){
-            for(int i=0; i<provincias.getAll().size(); i++){
-                nombres.add(provincias.getString("id"+i, "ERROR CACHÉ"));
-            }
-
-            initAdapter(this);
-        }
 
         GetProvincias gp=new GetProvincias(this);
         gp.execute("provincias?club=existe");

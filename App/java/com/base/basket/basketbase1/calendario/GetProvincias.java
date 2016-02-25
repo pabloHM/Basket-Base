@@ -43,13 +43,11 @@ public class GetProvincias extends AsyncTask<String, Void, JSONArray>{
             if(data.length()>0) {
                 String nombre;
                 int id;
-                SharedPreferences provincias = that.getSharedPreferences("Provincias", 0);
                 SharedPreferences idProvs = that.getSharedPreferences("IdProvs", 0);
-                for(int i=provincias.getAll().size(); i<data.length(); i++) {
+                for(int i=0; i<data.length(); i++) {
                     try {
                         nombre = data.getJSONObject(i).getString("nombre");
                         id = data.getJSONObject(i).getInt("id");
-                        provincias.edit().putString("id"+i, nombre).apply();
                         idProvs.edit().putInt("id"+i, id).apply();
                         MainActivity.nombres.add(nombre);
                     } catch (JSONException e) {
