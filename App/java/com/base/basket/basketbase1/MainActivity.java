@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,14 +19,20 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
+import com.base.basket.basketbase1.gcm.RegistrationIntentService;
 import com.base.basket.basketbase1.utils.DialogInternet;
 import com.base.basket.basketbase1.noticias.NoticiasFragment;
 import com.base.basket.basketbase1.utils.DialogInicio;
 import com.base.basket.basketbase1.utils.DialogOferta;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    private static final String TAG = "MainActivity";
+
     public static ImageView ivPatro;
     public static RelativeLayout rlPreLoad;
     public static Spinner listaEquipos;
@@ -35,12 +42,20 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<Integer> listIdClubs, listIdProvs;
 
     private DialogInicio gd=new DialogInicio();
-    private DialogOferta go=new DialogOferta();
+    private DialogOferta go;
+
+    public static String titOferta="", menOferta="", imgOferta="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(internetConnection()){
+            if (checkPlayServices()) {
+                // Start IntentService to register this application with GCM.
+                Intent intent = new Intent(this, RegistrationIntentService.class);
+                startService(intent);
+            }
+
             setContentView(R.layout.activity_main);
 
             checkFirstRun();
@@ -165,24 +180,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkFirstRun() {
-        SharedPreferences sp=getSharedPreferences("PREFERENCE", MODE_PRIVATE);
-        int firstTime=sp.getInt("Popup", 99);
-        if (firstTime!=0){
-            if(firstTime==99)
-                gd.show(getSupportFragmentManager(), "Inicio");
-            else
-                go.show(getSupportFragmentManager(), "Oferta");
 
-            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putInt("Popup", 0).commit();
+        SharedPreferences sp=getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        int firstTime=sp.getInt("Popup", 0);
+
+        if (firstTime!=0 && firstTime!=99){
+            titOferta=sp.getString("titulo", "");
+            menOferta=sp.getString("mensaje", "");
+            imgOferta=sp.getString("imagen", "");
+
+            go=new DialogOferta();
+            go.show(getSupportFragmentManager(), "Oferta");
         }
+        else if(firstTime!=99){
+            gd.show(getSupportFragmentManager(), "Inicio");
+        }
+
+        sp.edit().putInt("Popup", 99).apply();
     }
 
-    public void cerrarPopup(View view) {
-        if(gd.isVisible())
-            gd.dismiss();
-        else{
-            go.dismiss();
-        }
+    public void cerrarPopupInicio(View view) {
+        gd.dismiss();
+    }
+
+    public void cerrarPopupOferta(View view) {
+        go.dismiss();
     }
 
     private Boolean internetConnection(){
@@ -196,5 +218,20 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    private boolean checkPlayServices() {
+        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (apiAvailability.isUserResolvableError(resultCode)) {
+                apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST)
+                        .show();
+            } else {
+                Log.i(TAG, "This device is not supported.");
+            }
+            return false;
+        }
+        return true;
     }
 }

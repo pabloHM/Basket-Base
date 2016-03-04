@@ -25,5 +25,5 @@
         android:text="@string/continuar"
         android:background="@color/colorAccent"
         android:textColor="@color/colorMarc"
-        android:onClick="cerrarPopup"/>
+        android:onClick="cerrarPopupInicio"/>
 </LinearLayout>

@@ -40,7 +40,6 @@ public class GetNoticias extends AsyncTask<String, Void, JSONArray> {
         //Filtro de error en la consulta
         if(data!=null){
             //Filtro de tamaño de datos
-            Log.i("Longitud", data.length()+"");
             if(data.length()>1) {
                 String titulo, subtitulo, cuerpo, imagen;
                 for(int i=0; i<data.length(); i++) {

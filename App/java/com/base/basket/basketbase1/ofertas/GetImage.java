@@ -37,8 +37,10 @@ public class GetImage extends AsyncTask<Void, Void, Bitmap>{
         Bitmap bm=null;
 
         try {
-            URL imageUrl=new URL(folder+ruta);
-            bm= BitmapFactory.decodeStream(imageUrl.openConnection().getInputStream());
+            if(!ruta.equals("")){
+                URL imageUrl=new URL(folder+ruta);
+                bm= BitmapFactory.decodeStream(imageUrl.openConnection().getInputStream());
+            }
         } catch (MalformedURLException e) {
             Log.e("MalformedURLException", e.toString());
         } catch (IOException e) {
@@ -58,6 +60,14 @@ public class GetImage extends AsyncTask<Void, Void, Bitmap>{
             }
             else{
                 ivView.setImageBitmap(bitmap);
+                preView.setVisibility(View.GONE);
+            }
+        }
+        else{
+            if(rowView!=null) {
+                rowView.findViewById(R.id.preImg).setVisibility(View.GONE);
+            }
+            else{
                 preView.setVisibility(View.GONE);
             }
         }

@@ -40,9 +40,16 @@ public class PushActionCustom extends ParsePushBroadcastReceiver{
             String imagen = pushData.optString("imagen");
             Intent resultIntent;
 
-            SharedPreferences sp=context.getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE);
+            SharedPreferences sp=context.getSharedPreferences("PREFERENCE", Context.MODE_APPEND);
 
             switch (modal) {
+                case "pruebas":
+                    resultIntent = new Intent(context, com.base.basket.basketbase1.ofertas.MainActivity.class);
+
+                    sp.edit().putInt("Popup", 1).apply();
+                    sp.edit().putString("titulo", titulo).apply();
+                    sp.edit().putString("mensaje", mensaje).apply();
+                    sp.edit().putString("imagen", imagen).apply();
                 case "ofertas":
                     resultIntent = new Intent(context, com.base.basket.basketbase1.ofertas.MainActivity.class);
 

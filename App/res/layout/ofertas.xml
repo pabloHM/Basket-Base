@@ -49,5 +49,5 @@
         android:gravity="center"
         android:textAlignment="center"
         android:textStyle="italic"
-        android:text="Ver url de la oferta"/>
+        android:text="Acceso a la web"/>
 </LinearLayout>
