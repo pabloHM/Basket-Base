@@ -35,7 +35,7 @@
 		case "tmarcadores":
 			if($editar=='true'){
 				$id=$_GET["id"];
-				$qry="UPDATE ".$tabla."2 SET ptsLocal=".$_POST["local"].", ptsVis=".$_POST["vis"]." WHERE id='".$id."'";
+				$qry="UPDATE ".$tabla."2 SET ptsLocal=".$_POST["local"].", ptsVis=".$_POST["vis"]." WHERE idpartido='".$id."'";
 			}
 			else{
 				$selectQRY="SELECT * FROM tmarcadores2 WHERE idpartido=".$_POST['idpartido'];

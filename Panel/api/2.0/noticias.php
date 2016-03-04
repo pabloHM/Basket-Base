@@ -94,11 +94,5 @@
     	}
     }
     
-    if($condicion==true)
-    	$resN=mysqli_query($con, "SELECT COUNT(*) FROM tnoticias2 WHERE ".$where)or die("ERROR CUENTA CONDICIÓN.");
-    else
-    	$resN=mysqli_query($con, "SELECT COUNT(*) FROM tnoticias2")or die("ERROR CUENTA.");
-    $rowN = mysqli_fetch_assoc($resN);
-    $rowdata[]=array("longitud"=>$rowN['COUNT(*)']);
 	echo json_encode($rowdata, JSON_UNESCAPED_UNICODE);
 ?>

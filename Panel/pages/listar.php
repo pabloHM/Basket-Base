@@ -94,7 +94,7 @@
 							else if($sw=="1")
 								$qry="SELECT * FROM tpartidos2 WHERE idequipo='".$_GET["id"]."' AND (id NOT IN(SELECT idpartido FROM tmarcadores2) OR id IN(SELECT idpartido FROM tmarcadores2 WHERE ptsLocal IS NULL))";
 							else
-								$qry="SELECT p.id, m.id as idM, idpartido, ptsLocal, ptsVis, local, visitante FROM tpartidos2 p, tmarcadores2 m WHERE idequipo='".$_GET["id"]."' AND p.id=idpartido AND ptsLocal IS NOT NULL";
+								$qry="SELECT p.id as idP, m.id as idM, idpartido, ptsLocal, ptsVis, local, visitante FROM tpartidos2 p, tmarcadores2 m WHERE idequipo='".$_GET["id"]."' AND p.id=idpartido AND ptsLocal IS NOT NULL";
 							$res=mysqli_query($con, $qry);
 							while($row=mysqli_fetch_array($res)){
 								if($sw=="0")
@@ -102,7 +102,7 @@
 								else if($sw=="1")
 									echo "<a tabla='".$tabla."' href='anadir.php?tabla=marcadores&editable=false&borrable=".$borrable."&id=".$row['id']."' class='list-group-item'>".utf8_encode($row["local"])." - ".utf8_encode($row["visitante"])."</a>";
 								else
-									echo "<a tabla='".$tabla."' href='anadir.php?tabla=marcadores&editable=true&borrable=".$borrable."&id=".$row['id']."' class='list-group-item'>".utf8_encode($row["local"])." - ".utf8_encode($row["visitante"])."</a>";
+									echo "<a tabla='".$tabla."' href='anadir.php?tabla=marcadores&editable=true&borrable=".$borrable."&id=".$row['idM']."&idpartido=".$row['idP']."' class='list-group-item'>".utf8_encode($row["local"])." - ".utf8_encode($row["visitante"])."</a>";
 							}
 						break;
 						case "users":

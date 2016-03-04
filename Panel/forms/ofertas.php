@@ -16,7 +16,7 @@
 	</div>
 	<div id='mensajeInput' class='form-group'>
 		<label for='mensaje'>Mensaje*:</label>
-		<textarea name='mensaje' type='text' required id='mensaje' class='form-control' maxlength='200'></textarea>
+		<textarea name='mensaje' type='text' required id='mensaje' class='form-control' maxlength='500'></textarea>
 		<p class='error' style='display:none'>No puede quedar vacío</p>
 	</div>
 	<div id='fechaFinInput' class='form-group'>

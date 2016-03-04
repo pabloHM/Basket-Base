@@ -54,21 +54,4 @@ $(function(){
             }
         });
 	});
-
-    $('#enviarGcm').click(function(evnt){
-        evnt.preventDefault();
-        $("#loader").show();
-        $.ajax({
-            type: 'POST',
-            url: 'php/gcm.php',
-            success:function(data){
-                console.log(data);
-            },
-            error:function(err){
-                console.log(err);
-                $("#loader").hide();
-                $("#dbError").show();
-            }
-        });
-    });
 });

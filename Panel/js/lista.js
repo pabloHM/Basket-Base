@@ -7,7 +7,7 @@ $(function(){
 		sw=location.search.split("sw=")[1].split("&")[0];
 
 		if(borrar=="true" && sw=="0"){
-			$("#listaEquipos").addClass('borrar');
+				$("#listaEquipos").addClass('borrar');
 		}
 	}
 	else if(borrar=="true" && (modal=="users" || modal=="noticias" || modal=="ofertas"))

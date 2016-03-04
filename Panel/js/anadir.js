@@ -8,9 +8,14 @@ $(function(){
 		    $("#loader").hide();
   		}
   		else{
+  			var editable=location.search.split("editable=")[1].split("&")[0];
   			if(tabla=="marcadores"){
   				$("#loader").show();
-  				id=location.search.split("id=")[1].split("&")[0];
+  				if(editable=="true")
+  					id=location.search.split("idpartido=")[1].split("&")[0];
+  				else
+  					id=location.search.split("id=")[1].split("&")[0];
+
   				$("#idpartido").val(id);
 		    	$.ajax({
 			        type: 'POST',
@@ -32,9 +37,15 @@ $(function(){
 			        }
 			    });
   			}
-  			var editable=location.search.split("editable=")[1].split("&")[0];
+
   			if(editable=="true"){
-  				id=location.search.split("id=")[1].split("&")[0];
+  				if(tabla=="marcadores"){
+  					id=location.search.split("idpartido=")[1].split("&")[0];
+  				}
+  				else{
+  					id=location.search.split("id=")[1].split("&")[0];
+  				}
+  			
   				if(tabla=="users" && $(".nameUser").attr('permiso')!='A'){
   					if(id!=$(".nameUser").attr('iduser'))
   						window.location.href="anadir.php?tabla="+tabla+"&editable=true&id="+$(".nameUser").attr('iduser');
@@ -222,6 +233,7 @@ $(function(){
 					var mData="";
 					if(tabla=="users" && passEditada!="" && passEditada==$("#pass").val())
 						mData="&noPassEdit=1";
+
 					$.ajax({
 				        type: 'POST',
 				        url: '../php/anadir.php?tabla='+tabla+"&editable="+editable+"&id="+id+mData,
