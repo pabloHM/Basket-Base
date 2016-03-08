@@ -20,8 +20,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imgOferta"
-        android:visibility="gone"/>
+        android:id="@+id/imgOferta"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

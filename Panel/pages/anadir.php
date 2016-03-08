@@ -36,7 +36,7 @@
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">
-  					<a class="navbar-brand" href="../">Basket Base</a>
+  					<a class="navbar-brand" href="../pages/panel">Basket Base</a>
 				</div>
 				<div class='navbar-user'>
 					¡Bienvenido, <span class='nameUser' permiso="<?=$_SESSION['permiso'];?>" iduser='<?=$_SESSION['id'];?>'><?php echo $_SESSION['uName']?></span>!<br>

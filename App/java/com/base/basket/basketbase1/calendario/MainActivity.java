@@ -1,7 +1,6 @@
 package com.base.basket.basketbase1.calendario;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;

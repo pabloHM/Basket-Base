@@ -249,14 +249,13 @@ $(function(){
 				            			dataPush='catNom=0&modal=ofertas&message='+$('#mensaje').val()+'&title='+$('#idpatro option:selected').text()+'&imagen='+rutaImagen;
 				            		}
 				            		else{
-				            			dataPush='idpartido='+id;
+				            			dataPush='modal=marcadores&idpartido='+id;
 				            		}
 				            		$.ajax({
 								        type: 'POST',
-								        url: '../php/parse.php',
+								        url: '../php/gcm.php',
 								        data: dataPush,
 								        success:function(res){
-								        	console.log(res);
 								            history.back();
 								        },
 								        error:function(err){

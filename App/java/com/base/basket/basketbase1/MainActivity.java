@@ -195,8 +195,6 @@ public class MainActivity extends AppCompatActivity {
         else if(firstTime!=99){
             gd.show(getSupportFragmentManager(), "Inicio");
         }
-
-        sp.edit().putInt("Popup", 99).apply();
     }
 
     public void cerrarPopupInicio(View view) {

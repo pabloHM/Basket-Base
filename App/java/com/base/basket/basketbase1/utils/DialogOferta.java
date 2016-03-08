@@ -1,13 +1,10 @@
 package com.base.basket.basketbase1.utils;
 
 import android.app.Dialog;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,11 +13,10 @@ import android.widget.TextView;
 
 import com.base.basket.basketbase1.MainActivity;
 import com.base.basket.basketbase1.R;
-import com.base.basket.basketbase1.ofertas.GetImage;
 
 public class DialogOferta extends DialogFragment {
     private static TextView ofertaTit, cuerpoOferta;
-    private static ImageView imgOferta;
+    public static ImageView imgOferta;
     private static RelativeLayout preImg;
 
     public DialogOferta(){}
@@ -41,7 +37,7 @@ public class DialogOferta extends DialogFragment {
         ofertaTit.setText(MainActivity.titOferta);
         cuerpoOferta.setText(MainActivity.menOferta);
 
-        GetImage gi=new GetImage(imgOferta, preImg, MainActivity.imgOferta);
+        com.base.basket.basketbase1.ofertas.GetImage gi=new com.base.basket.basketbase1.ofertas.GetImage(imgOferta, preImg, MainActivity.imgOferta);
         gi.execute();
 
         builder.setView(dialog);

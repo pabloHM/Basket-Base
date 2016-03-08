@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.base.basket.basketbase1.R;
+import com.base.basket.basketbase1.utils.DialogOferta;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -19,7 +20,7 @@ public class GetImage extends AsyncTask<Void, Void, Bitmap>{
     private ImageView ivView=null;
     private RelativeLayout preView=null;
     private String ruta;
-    private static final String folder="http://bbpanel.advalleinclan.es/img/ofertas/";
+    private static final String folder="http://app.advalleinclan.es/img/ofertas/";
 
     public GetImage(View rowView, String name){
         this.rowView=rowView;

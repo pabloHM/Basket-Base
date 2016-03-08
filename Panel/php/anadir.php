@@ -97,6 +97,6 @@
 		break;
 	}
 
-	mysqli_query($con, $qry)or die($qry);
+	//mysqli_query($con, $qry)or die($qry);
 	echo true;
 ?>

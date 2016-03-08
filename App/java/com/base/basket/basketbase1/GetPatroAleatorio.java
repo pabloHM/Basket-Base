@@ -51,13 +51,15 @@ public class GetPatroAleatorio  extends AsyncTask<String, Void, JSONArray> {
                 GetImage gi=new GetImage(MainActivity.ivPatro, imagen);
                 gi.execute();
 
-                MainActivity.ivPatro.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                if(url!=null && !url.equals("")){
+                    MainActivity.ivPatro.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
                         Intent web=new Intent(Intent.ACTION_VIEW, Uri.parse(Coding.fixUrl(url)));
                         that.startActivity(web);
-                    }
-                });
+                        }
+                    });
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }

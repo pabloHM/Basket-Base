@@ -78,6 +78,7 @@
             android:background="@color/colorMarc"
             android:gravity="center"
             android:textSize="15sp"
+            android:maxLength="3"
             android:id="@+id/ptsProvLoc"/>
         <TextView
             android:layout_width="50dp"
@@ -95,6 +96,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:background="@color/colorMarc"
             android:gravity="center"
+            android:maxLength="3"
             android:textSize="15sp"
             android:id="@+id/ptsProvVis"/>
         <TextView
