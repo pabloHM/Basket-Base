@@ -62,7 +62,7 @@
 						break;
 						case "clubs":
 							$sw=$_GET["sw"];
-							$qry="SELECT * FROM tclubs2 WHERE idprovincia='".$_GET["id"]."'";
+							$qry="SELECT * FROM tclubs2 WHERE idprovincia='".$_GET["id"]."' ORDER BY nombre";
 							$res=mysqli_query($con, $qry);
 							while($row=mysqli_fetch_array($res)){
 								if($sw=="0")
@@ -106,7 +106,7 @@
 							}
 						break;
 						case "users":
-							$qry="SELECT * FROM tusers2";
+							$qry="SELECT * FROM tusers2 ORDER BY nombre";
 							$res=mysqli_query($con, $qry);
 							while($row=mysqli_fetch_array($res)){
 								echo "<a tabla='".$tabla."' href='anadir.php?tabla=".$tabla."&editable=true&borrable=".$borrable."&id=".$row['id']."' class='list-group-item'>".utf8_encode($row["nombre"])."</a>";
@@ -121,7 +121,7 @@
 						break;
 						case "patrocinadores":
 							$sw=$_GET["sw"];
-							$qry="SELECT * FROM tpatrocinadores2";
+							$qry="SELECT * FROM tpatrocinadores2 ORDER BY nombre";
 							$res=mysqli_query($con, $qry);
 							while($row=mysqli_fetch_array($res)){
 								if($sw=="1")

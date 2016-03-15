@@ -123,6 +123,9 @@ $(function(){
 					    		passEditada=pass;
 					    		$("#passRepet").val(pass);
 					    		$("#permiso").val(permiso);
+					    		if($(".nameUser").attr('permiso')!='A'){
+					    			$("#permisoInput").hide();
+					    		}
 					    		break;
 					    	case "noticias":
 					    		var idclub=data.split('idclub:')[1];
@@ -267,6 +270,11 @@ $(function(){
 				            	}
 				            	else
 				        			history.back();
+				        	}
+				        	else if(data==21){
+				        		$("#errorOfertas").hide();
+				        		$("#errorOfertas").show();
+				        		$("#loader").hide();
 				        	}
 				        	else{
 				        		$("#errorDatos").hide();

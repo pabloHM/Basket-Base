@@ -11,7 +11,7 @@
     }
 	
 	if($hacer=='true'){
-		$consulta="INSERT INTO gcm VALUES('".$_GET['id']."')";
+		$consulta="INSERT INTO gcm(registration_id) VALUES('".$_GET['id']."')";
 		mysqli_query($con, $consulta) or die("ERROR PARA INSERTAR: ".$consulta);
 	}
 ?>

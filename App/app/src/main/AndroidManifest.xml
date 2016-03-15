@@ -84,5 +84,8 @@
         <activity
             android:name="com.base.basket.basketbase1.ayuda.MainActivity"
             android:parentActivityName="com.base.basket.basketbase1.MainActivity"/>
+        <activity
+            android:name="com.base.basket.basketbase1.ImageFullScreen"
+            android:parentActivityName="com.base.basket.basketbase1.MainActivity"/>
     </application>
 </manifest>

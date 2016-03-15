@@ -6,6 +6,7 @@ $(function(){
 				window.location.href="anadir.php?tabla="+tabla+"&editable=true&id="+$(".nameUser").attr('iduser');
 			}
 		});
+		
 		if($(".nameUser").attr('permiso')!='S'){
 			$("#clubs").hide();
 			$("#equipos").hide();

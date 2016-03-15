@@ -92,8 +92,20 @@
 				else
 					$qry="UPDATE ".$tabla."2 SET idpatro=".$_POST["idpatro"].", mensaje='".utf8_decode($_POST["mensaje"])."', url='".$_POST["url"]."', fechaFin='".$_POST["fechaFin"]."' WHERE id='".$id."'";
 			}
-			else
-				$qry="INSERT INTO ".$tabla."2(idpatro, mensaje, fechaFin, url, imagen) VALUES (".$_POST["idpatro"].", '".utf8_decode($_POST["mensaje"])."', '".$_POST["fechaFin"]."', '".$_POST["url"]."', '".$_POST["imagen"]."')";
+			else{
+				/*$ofertas="SELECT ofertas FROM tpatrocinadores2 WHERE id=".$_POST["idpatro"];
+				$petOf=mysqli_query($con, $ofertas)or die($ofertas);
+				$resOf=mysqli_fetch_assoc($petOf);
+				if($resOf["ofertas"]>0){
+					$qry="INSERT INTO ".$tabla."2(idpatro, mensaje, fechaFin, url, imagen) VALUES (".$_POST["idpatro"].", '".utf8_decode($_POST["mensaje"])."', '".$_POST["fechaFin"]."', '".$_POST["url"]."', '".$_POST["imagen"]."')";
+
+					$restar="UPDATE tpatrocinadores2 SET ofertas=ofertas-1 WHERE id=".$_POST["idpatro"];
+					mysqli_query($con, $restar)or die($restar);
+				}
+				else{
+					echo 2;
+				}*/
+			}
 		break;
 	}
 

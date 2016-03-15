@@ -15,7 +15,7 @@
 		<input name='passRepet' type='password' required id='passRepet' class='form-control' placeholder='Introduce la contraseña.' maxlength="15">
 		<p class='error' style='display: none'>No coinciden las contraseñas.</p>
 	</div>
-	<button id='generaPass' class="btn btn-warning" style="margin-bottom: 10px">Generar contraseña aleatoria</button>
+	<div><button id='generaPass' class="btn btn-warning" style="margin-bottom: 10px">Generar contraseña aleatoria</button></div>
 	<span id="passGenerada"></span>
 	<div id='permisoInput' class='form-group'>
 		<label for='permiso'>Permiso*:</label>

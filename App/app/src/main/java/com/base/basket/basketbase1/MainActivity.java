@@ -180,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkFirstRun() {
-
         SharedPreferences sp=getSharedPreferences("PREFERENCE", MODE_PRIVATE);
         int firstTime=sp.getInt("Popup", 0);
 
@@ -195,6 +194,8 @@ public class MainActivity extends AppCompatActivity {
         else if(firstTime!=99){
             gd.show(getSupportFragmentManager(), "Inicio");
         }
+
+        sp.edit().putInt("Popup", 99).apply();
     }
 
     public void cerrarPopupInicio(View view) {

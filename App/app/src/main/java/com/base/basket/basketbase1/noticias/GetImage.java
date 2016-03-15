@@ -1,5 +1,6 @@
 package com.base.basket.basketbase1.noticias;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -8,9 +9,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.base.basket.basketbase1.ImageFullScreen;
 import com.base.basket.basketbase1.R;
 import com.base.basket.basketbase1.utils.ImageUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -50,7 +53,7 @@ public class GetImage extends AsyncTask<Void, Void, Bitmap> {
     }
 
     @Override
-    protected void onPostExecute(Bitmap bitmap) {
+    protected void onPostExecute(final Bitmap bitmap) {
         if(bitmap!=null) {
             if(rowView!=null) {
                 ImageView iv = (ImageView) rowView.findViewById(R.id.imgNoticia);
@@ -59,6 +62,19 @@ public class GetImage extends AsyncTask<Void, Void, Bitmap> {
             }
             else if(ivView!=null){
                 ivView.setImageBitmap(bitmap);
+                ivView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent in=new Intent(ivView.getContext(), ImageFullScreen.class);
+
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 80, stream);
+                        byte[] bytes = stream.toByteArray();
+                        in.putExtra("image", bytes);
+
+                        ivView.getContext().startActivity(in);
+                    }
+                });
                 preView.setVisibility(View.GONE);
             }
         }
